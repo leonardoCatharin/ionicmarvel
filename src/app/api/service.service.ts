@@ -18,15 +18,17 @@ export class ServiceService {
     let ts = this.generateTs();
     
     return new Promise((ret) => {
+      this.getKeys().then(_ => {
         this.http.get(this.host + url + '?ts=' + ts + '&apikey=' + this.publicKey + '&hash=' + this.getHash(ts) + parameters).subscribe((response) => {
-            if(response){
-                ret(response);
-            } else {
-                ret(false);
-            }
+          if(response){
+              ret(response);
+          } else {
+              ret(false);
+          }
         }, (erro) => {
-            ret(false);
+          ret(false);
         });
+      });
     });
   }
 
@@ -36,5 +38,19 @@ export class ServiceService {
 
   private getHash(ts){
       return Md5.hashStr(ts + this.privateKey + this.publicKey);
+  }
+
+  private getKeys(){
+    return new Promise((ret) => {
+      this.http.get('assets/keys.json').subscribe((keys:any) => {
+        this.publicKey = keys.public;
+        this.privateKey = keys.private;
+        ret(true);
+
+      }, err => {
+        alert('Chaves de acesso inválidas.');
+        ret(false);
+      });
+    });
   }
 }
