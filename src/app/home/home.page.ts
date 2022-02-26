@@ -31,14 +31,14 @@ export class HomePage {
 
   }
 
-  /* *INICIALIZA FILTRO */
+  /* inicializa filtro */
   private initFilter() {
     // this.filtroCtrl.valueChanges.debounceTime(750).subscribe((filtro) => {
         this.getAllCharacters();
     // });
   }
 
-  /* *RECUPERA PERSONAGENS */
+  /* recupera personagens de acordo com a paginação */
   public getAllCharacters(){
       this.checking = true;
 
@@ -54,7 +54,7 @@ export class HomePage {
       });
   }
 
-  /* PAGINATION */
+  /* métodos relacionados à paginação */
   public goFirstPage(){
       this.pagination.setCurrentPage(1);
       this.getAllCharacters();
@@ -81,8 +81,11 @@ export class HomePage {
   }
   /* --- */
 
+  /* vai para os detalhes do personagem */
   public goDetails(character: any){
-      // this.navCtrl.push(Detail, {character: character});
+    this.navCtrl.navigateForward('character', {
+        queryParams: { character: character }
+    });
   }   
 
 }

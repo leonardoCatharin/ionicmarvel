@@ -1,7 +1,7 @@
 <ion-header class="header-marvel">
   <ion-row class="ion-align-items-center padding-4">
     <ion-col size="8" size-md="11" class="info-test ion-text-left">
-      <span class="name-test">Aula IONIC </span> Projeto Marvel
+      Projeto <span class="name-test"> Marvel </span>
     </ion-col>
     <ion-col size="4" size-md="1" class="ion-text-right">
       <span class="icon-account"> CB </span>
@@ -46,7 +46,7 @@
             </ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let character of characters" class="frame-list">
+          <ion-row *ngFor="let character of characters" class="frame-list" (click)="goDetails(character)">
             <ion-col size="12">
               <ion-row class="white-frame-list ion-align-items-center">
                 <ion-col size="4" size-md="1" class="col-character">

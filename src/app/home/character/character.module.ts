@@ -1,3 +1,4 @@
+import { LoadingComponent } from './../../util/loading/loading.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import { CharacterPage } from './character.page';
     IonicModule,
     CharacterPageRoutingModule
   ],
-  declarations: [CharacterPage]
+  declarations: [CharacterPage, LoadingComponent],
+  exports: [LoadingComponent],
 })
 export class CharacterPageModule {}
