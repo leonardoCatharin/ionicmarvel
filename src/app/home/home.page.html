@@ -23,9 +23,8 @@
             <ion-col size="12" class="page-subtitle">
               Nome do personagem
             </ion-col>
-            <ion-col size="12" size-md="4">
-              <ion-input class="input-form" [(ngModel)]="filtro.descricao" [value]="filtro.descricao" placeholder="Search"></ion-input>
-              <ion-icon class="icon-search-character" name="search"></ion-icon>
+            <ion-col size="12" size-md="6">
+              <ion-searchbar (ionChange)="initFilter()" [(ngModel)]="filtro.descricao" class="input-form" debounce="500" placeholder="Pesquise..."></ion-searchbar>
             </ion-col>
           </ion-row>
         </ion-col>

@@ -32,7 +32,7 @@ export class HomePage {
   }
 
   /* inicializa filtro */
-  private initFilter() {
+  public initFilter() {
     // this.filtroCtrl.valueChanges.debounceTime(750).subscribe((filtro) => {
         this.getAllCharacters();
     // });
