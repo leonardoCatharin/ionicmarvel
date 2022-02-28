@@ -84,7 +84,7 @@ export class HomePage {
   /* vai para os detalhes do personagem */
   public goDetails(character: any){
     this.navCtrl.navigateForward('character', {
-        queryParams: { character: character }
+        queryParams: { id: character.id }
     });
   }   
 

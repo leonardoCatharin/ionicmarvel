@@ -54,12 +54,22 @@ export class CharacterPage {
 
   constructor(private characterService: CharacterService, 
               private route: ActivatedRoute) { 
+    
     /* recebimento de objetos por parâmetro */
     this.route.queryParams.subscribe(params => {
-      this.character = params['character'];
+      let id = params['id'];
+
+      if(id){
+        this.characterService.getCharacterById(id).then(character => {
+          this.character = character[0] || this.character;
+          
+          if(this.character){
+              this.getComicsByCharacter();
+          }
+        });
+      }
     });
   }
-
 
   /* recupera os hqs do personagem */
   public getComicsByCharacter(){
@@ -70,4 +80,5 @@ export class CharacterPage {
         this.checking = false;
     });
   }
+
 }
