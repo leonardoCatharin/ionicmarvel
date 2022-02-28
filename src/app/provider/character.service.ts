@@ -76,6 +76,7 @@ export class CharacterService {
     })
   }
 
+  /* atualiza as informações de paginação */
   private updatePagination(pagination: PaginationComponent, data: any){
     pagination.setTotal(data.total);
     pagination.setLimit(data.limit);
